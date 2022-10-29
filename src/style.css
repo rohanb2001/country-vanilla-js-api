@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;1,200&display=swap");
+
+:root {
+  --primary-bg: #0f2027;
+  --primary-color: #000;
+  --primary-white: #fff;
+  --box-color: #203943;
+  --input-border: #757575;
+  --input-placeholder-color: #b1a5a5;
+  --label-bg-color: silver;
+  --button-bg: #2c4e5b;
+  --h2-color: #c2e9f8;
+  --span-color: #d3d6e0;
+  --h4-color: #ccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  height: 100vh;
+  background: var(--primary-bg);
+  background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+
+  color: var(--primary-color);
+}
+
+h3 {
+  text-align: center;
+
+  color: #f83737;
+
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: 1.1px;
+  font-style: italic;
+  font-weight: bold;
+  word-spacing: 1px;
+}
+
+.navbar {
+  padding: 1.8rem;
+  width: 300px;
+  margin: 10px auto 20px auto;
+}
+
+.navbar .heading {
+  text-align: center;
+
+  color: #3cd6b0;
+  background-image: -webkit-linear-gradient(0deg, #3cd6b0 0%, #27c3b9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  width: 100%;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  font-style: italic;
+  font-weight: bold;
+  word-spacing: 5px;
+}
+
+/* Form Content Section */
+.form-wrapper {
+  /* height: 500px; */
+  width: 450px;
+  background-color: var(--box-color);
+  color: var(--primary-white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 10px 10px 48px -25px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+/* form {
+  padding: 5px;
+} */
+
+.form-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 25px 0 10px 35px;
+}
+
+.form-content .input-data {
+  height: 40px;
+  width: 50%;
+  position: relative;
+  margin-bottom: 2rem;
+  margin-right: 1.4rem;
+}
+
+.form-content .input-data input {
+  height: 100%;
+  width: 90%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  border-bottom: 1px solid var(--input-border);
+  background-color: transparent;
+  color: var(--primary-white);
+}
+
+.input-data input::placeholder {
+  color: transparent;
+}
+
+.input-data input:focus::placeholder {
+  color: var(--input-placeholder-color);
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-data input:focus ~ label,
+.input-data input:valid ~ label {
+  transform: translateY(-25px);
+  font-size: 12px;
+  color: var(--primary-white);
+}
+
+.form-content .input-data label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: var(--label-bg-color);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-content .input-data .underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.input-data .underline::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 90%;
+  background: var(--label-bg-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.input-data input:focus ~ .underline::before {
+  transform: scaleX(1);
+}
+
+.form-content button {
+  padding: 13px 25px;
+  outline: none;
+  border: none;
+  background: var(--button-bg);
+  color: var(--primary-white);
+  border-radius: 10px;
+  letter-spacing: 1.3px;
+  margin-top: -25px;
+}
+
+.form-content button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+/* Content Section */
+.content-wrapper {
+  padding: 1rem;
+}
+
+.content-wrapper .image-title {
+  width: 60%;
+  margin: -25px auto 10px auto;
+}
+
+.content-wrapper .image-title img {
+  height: 100px;
+  width: 150px;
+  margin: 0 auto 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.content-wrapper .image-title h2 {
+  text-align: center;
+  letter-spacing: 1.3px;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--h2-color);
+}
+
+.content .data-wrapper {
+  display: flex;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.content .data-wrapper span {
+  margin-left: 10px;
+  color: var(--span-color);
+  font-style: italic;
+  letter-spacing: 1.3px;
+}
+
+.content .data-wrapper h4 {
+  letter-spacing: 1.3px;
+  color: var(--h4-color);
+}
