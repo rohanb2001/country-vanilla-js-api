@@ -1,6 +1,7 @@
 const searchButton = document.querySelector(".btn");
 const form = document.querySelector("form");
 const contentWrapper = document.querySelector(".content-wrapper");
+const loader = document.querySelector(".loading");
 
 // State Management
 let countryName;
@@ -14,11 +15,19 @@ function submitForm(e) {
 async function getCountryDetails() {
   try {
     let countryURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
+    loader.classList.remove("disable");
+    contentWrapper.innerHTML = "";
     let response = await fetch(countryURL);
     let data = await response.json();
-    showUI(data);
+    setTimeout(() => {
+      showUI(data);
+      loader.classList.add("disable");
+    }, 2000);
+    // showUI(data)
+    // loader.classList.add("disable");
   } catch (error) {
-    console.log("Coundn't  found searched country!...");
+    loader.classList.add("disable");
+    console.error("Coundn't  found searched country!...");
     contentWrapper.innerHTML = `<h3>Oops no result found!!!😶 Enter valid country name...</h3>`;
   }
 }
