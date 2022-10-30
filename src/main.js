@@ -23,51 +23,51 @@ async function getCountryDetails() {
       showUI(data);
       loader.classList.add("disable");
     }, 2000);
-    // showUI(data)
-    // loader.classList.add("disable");
   } catch (error) {
-    loader.classList.add("disable");
-    console.error("Coundn't  found searched country!...");
-    contentWrapper.innerHTML = `<h3>Oops no result found!!!😶 Enter valid country name...</h3>`;
+    console.error(error.message);
   }
 }
 
 function showUI(data) {
-  let str = `
-    <div class="image-title">
-          <img src="${data[0].flags.svg}" />
-          <h2 class="title">${data[0].name.common}</h2>
-        </div>
-        <div class="content">
-          <div class="data-wrapper">
-            <h4>Capital :</h4>
-            <span>${data[0].capital[0]}</span>
+  if (data.message === "Not Found") {
+    contentWrapper.innerHTML = `<h3>Oops no result found!!!😶 Enter valid country name...</h3>`;
+  } else {
+    let str = `
+      <div class="image-title">
+            <img src="${data[0].flags.svg}" />
+            <h2 class="title">${data[0].name.common}</h2>
           </div>
-          <div class="data-wrapper">
-            <h4>Continent :</h4>
-            <span>${data[0].continents[0]}</span>
+          <div class="content">
+            <div class="data-wrapper">
+              <h4>Capital :</h4>
+              <span>${data[0].capital[0]}</span>
+            </div>
+            <div class="data-wrapper">
+              <h4>Continent :</h4>
+              <span>${data[0].continents[0]}</span>
+            </div>
+            <div class="data-wrapper">
+              <h4>Population :</h4>
+              <span>${data[0].population}</span>
+            </div>
+            <div class="data-wrapper">
+              <h4>Currency :</h4>
+              <span>${
+                data[0].currencies[Object.keys(data[0].currencies)].name
+              } - ${Object.keys(data[0].currencies)[0]}</span>
+            </div>
+            <div class="data-wrapper">
+              <h4>Common Languages :</h4>
+              <span>${Object.values(data[0].languages)
+                .toString()
+                .split(",")
+                .join(", ")}</span>
+            </div>
           </div>
-          <div class="data-wrapper">
-            <h4>Population :</h4>
-            <span>${data[0].population}</span>
-          </div>
-          <div class="data-wrapper">
-            <h4>Currency :</h4>
-            <span>${
-              data[0].currencies[Object.keys(data[0].currencies)].name
-            } - ${Object.keys(data[0].currencies)[0]}</span>
-          </div>
-          <div class="data-wrapper">
-            <h4>Common Languages :</h4>
-            <span>${Object.values(data[0].languages)
-              .toString()
-              .split(",")
-              .join(", ")}</span>
-          </div>
-        </div>
-    `;
+      `;
 
-  contentWrapper.innerHTML = str;
+    contentWrapper.innerHTML = str;
+  }
 }
 
 function getFormValues(e) {
